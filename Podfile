@@ -11,6 +11,8 @@ target 'FitTrackr' do
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
   pod ‘PINCache’
+  pod ‘Hue’
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	
 
   target 'FitTrackrTests' do

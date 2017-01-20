@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    
+    
+    window                      = UIWindow(frame: UIScreen.main.bounds)
+    // Set up the first View Controller
+    let vc1 = InitialViewController()
+    let navBar1 = UINavigationController(rootViewController: vc1)
+    navBar1.tabBarItem.title = "Orange"
+    navBar1.tabBarItem.image = nil
+
+    
+    // Set up the second View Controller
+    let vc2 = UIViewController()
+    vc2.view.backgroundColor = UIColor.purple
+    let navBar2 = UINavigationController(rootViewController: vc2)
+    navBar2.tabBarItem.title = "Purple"
+    navBar2.tabBarItem.image = nil
+
+    
+    
+    let vc3 = UIViewController()
+    vc3.view.backgroundColor = UIColor.blue
+    
+    let navBar3 = UINavigationController(rootViewController: vc3)
+    navBar3.tabBarItem.title = "Blue"
+    navBar3.tabBarItem.image = nil
+
+    
+    // Set up the Tab Bar Controller to have two tabs
+    let tabBarController = UITabBarController()
+    tabBarController.viewControllers = [navBar1, navBar2, navBar3]
+    
+    // Make the Tab Bar Controller the root view controller
+    window?.rootViewController = tabBarController
+    
+    
+    /*
+    let initialVC  = InitialViewController()
+   
+    let tabBarController = UITabBarController()
+    
+    let controllers = [initialVC]
+    tabBarController.viewControllers = [initialVC]
+    
+    initialVC.tabBarItem = UITabBarItem(
+      title: "Pie",
+      image: nil,
+      tag: 1)
+    
+    let feedNavCtrl = UINavigationController(rootViewController: initialVC)
+    window.rootViewController  = tabBarController
+    print(tabBarController.viewControllers)
+    // initialVC.title = "Welcome"
+    
+    */
+    
+    window?.makeKeyAndVisible()
+    
+    
+
+    
+    
     return true
   }
 

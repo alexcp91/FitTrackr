@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		265EA2722B03B079D10898B2 /* Pods_FitTrackrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC460602B92940419BB010 /* Pods_FitTrackrTests.framework */; };
 		312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F51E30011B003FB1F0 /* AppDelegate.swift */; };
-		312A80F81E30011B003FB1F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F71E30011B003FB1F0 /* ViewController.swift */; };
+		312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F71E30011B003FB1F0 /* InitialViewController.swift */; };
 		312A80FB1E30011B003FB1F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312A80F91E30011B003FB1F0 /* Main.storyboard */; };
 		312A80FD1E30011B003FB1F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312A80FC1E30011B003FB1F0 /* Assets.xcassets */; };
 		312A81001E30011B003FB1F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312A80FE1E30011B003FB1F0 /* LaunchScreen.storyboard */; };
 		312A810B1E30011B003FB1F0 /* FitTrackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A810A1E30011B003FB1F0 /* FitTrackrTests.swift */; };
 		312A81161E30011B003FB1F0 /* FitTrackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A81151E30011B003FB1F0 /* FitTrackrUITests.swift */; };
+		314AB7FF1E31B16200B7B147 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */; };
+		31F7406E1E3174BD009F54B4 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7406D1E3174BD009F54B4 /* MapNode.swift */; };
 		F19258E729C02A538E60EFE5 /* Pods_FitTrackrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FA34B734EDF3E9E8324291 /* Pods_FitTrackrUITests.framework */; };
 		FDA37BB08E833658958E0B67 /* Pods_FitTrackr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098E3892EF46CB5D7F9C0EB5 /* Pods_FitTrackr.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +42,7 @@
 		098E3892EF46CB5D7F9C0EB5 /* Pods_FitTrackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitTrackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		312A80F21E30011B003FB1F0 /* FitTrackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitTrackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312A80F51E30011B003FB1F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		312A80F71E30011B003FB1F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		312A80F71E30011B003FB1F0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		312A80FA1E30011B003FB1F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		312A80FC1E30011B003FB1F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		312A80FF1E30011B003FB1F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		312A81111E30011B003FB1F0 /* FitTrackrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitTrackrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		312A81151E30011B003FB1F0 /* FitTrackrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTrackrUITests.swift; sourceTree = "<group>"; };
 		312A81171E30011B003FB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		31F7406D1E3174BD009F54B4 /* MapNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
 		32FA34B734EDF3E9E8324291 /* Pods_FitTrackrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitTrackrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50EBE0A24EA79839A1E18B31 /* Pods-FitTrackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitTrackrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitTrackrUITests/Pods-FitTrackrUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7750473D83957C5A26131598 /* Pods-FitTrackr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitTrackr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitTrackr/Pods-FitTrackr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				312A80F51E30011B003FB1F0 /* AppDelegate.swift */,
-				312A80F71E30011B003FB1F0 /* ViewController.swift */,
+				314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */,
+				31F7406D1E3174BD009F54B4 /* MapNode.swift */,
+				312A80F71E30011B003FB1F0 /* InitialViewController.swift */,
 				312A80F91E30011B003FB1F0 /* Main.storyboard */,
 				312A80FC1E30011B003FB1F0 /* Assets.xcassets */,
 				312A80FE1E30011B003FB1F0 /* LaunchScreen.storyboard */,
@@ -449,8 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				312A80F81E30011B003FB1F0 /* ViewController.swift in Sources */,
+				31F7406E1E3174BD009F54B4 /* MapNode.swift in Sources */,
+				312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */,
 				312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */,
+				314AB7FF1E31B16200B7B147 /* PopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +715,7 @@
 				312A811C1E30011B003FB1F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		312A811D1E30011B003FB1F0 /* Build configuration list for PBXNativeTarget "FitTrackrTests" */ = {
 			isa = XCConfigurationList;
@@ -715,6 +724,7 @@
 				312A811F1E30011B003FB1F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		312A81201E30011B003FB1F0 /* Build configuration list for PBXNativeTarget "FitTrackrUITests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +733,7 @@
 				312A81221E30011B003FB1F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
