@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		265EA2722B03B079D10898B2 /* Pods_FitTrackrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC460602B92940419BB010 /* Pods_FitTrackrTests.framework */; };
+		311BE2451E32D700006068A3 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2441E32D700006068A3 /* Protocol.swift */; };
+		311BE2471E32E166006068A3 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2461E32E166006068A3 /* RunViewController.swift */; };
+		311BE2491E32EC02006068A3 /* rectangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2481E32EC02006068A3 /* rectangleNode.swift */; };
 		312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F51E30011B003FB1F0 /* AppDelegate.swift */; };
 		312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F71E30011B003FB1F0 /* InitialViewController.swift */; };
 		312A80FB1E30011B003FB1F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312A80F91E30011B003FB1F0 /* Main.storyboard */; };
@@ -16,6 +19,7 @@
 		312A810B1E30011B003FB1F0 /* FitTrackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A810A1E30011B003FB1F0 /* FitTrackrTests.swift */; };
 		312A81161E30011B003FB1F0 /* FitTrackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A81151E30011B003FB1F0 /* FitTrackrUITests.swift */; };
 		314AB7FF1E31B16200B7B147 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */; };
+		31513EA81E326A9C00D355DF /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31513EA71E326A9C00D355DF /* Run.swift */; };
 		31F7406E1E3174BD009F54B4 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7406D1E3174BD009F54B4 /* MapNode.swift */; };
 		F19258E729C02A538E60EFE5 /* Pods_FitTrackrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FA34B734EDF3E9E8324291 /* Pods_FitTrackrUITests.framework */; };
 		FDA37BB08E833658958E0B67 /* Pods_FitTrackr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098E3892EF46CB5D7F9C0EB5 /* Pods_FitTrackr.framework */; };
@@ -40,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		098E3892EF46CB5D7F9C0EB5 /* Pods_FitTrackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitTrackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		311BE2441E32D700006068A3 /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		311BE2461E32E166006068A3 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		311BE2481E32EC02006068A3 /* rectangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rectangleNode.swift; sourceTree = "<group>"; };
 		312A80F21E30011B003FB1F0 /* FitTrackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitTrackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312A80F51E30011B003FB1F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		312A80F71E30011B003FB1F0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +61,7 @@
 		312A81151E30011B003FB1F0 /* FitTrackrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTrackrUITests.swift; sourceTree = "<group>"; };
 		312A81171E30011B003FB1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		31513EA71E326A9C00D355DF /* Run.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		31F7406D1E3174BD009F54B4 /* MapNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
 		32FA34B734EDF3E9E8324291 /* Pods_FitTrackrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitTrackrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50EBE0A24EA79839A1E18B31 /* Pods-FitTrackrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitTrackrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitTrackrUITests/Pods-FitTrackrUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,10 +126,14 @@
 		312A80F41E30011B003FB1F0 /* FitTrackr */ = {
 			isa = PBXGroup;
 			children = (
+				31513EA71E326A9C00D355DF /* Run.swift */,
 				312A80F51E30011B003FB1F0 /* AppDelegate.swift */,
 				314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */,
 				31F7406D1E3174BD009F54B4 /* MapNode.swift */,
 				312A80F71E30011B003FB1F0 /* InitialViewController.swift */,
+				311BE2461E32E166006068A3 /* RunViewController.swift */,
+				311BE2481E32EC02006068A3 /* rectangleNode.swift */,
+				311BE2441E32D700006068A3 /* Protocol.swift */,
 				312A80F91E30011B003FB1F0 /* Main.storyboard */,
 				312A80FC1E30011B003FB1F0 /* Assets.xcassets */,
 				312A80FE1E30011B003FB1F0 /* LaunchScreen.storyboard */,
@@ -456,9 +468,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F7406E1E3174BD009F54B4 /* MapNode.swift in Sources */,
+				311BE2491E32EC02006068A3 /* rectangleNode.swift in Sources */,
 				312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */,
 				312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */,
+				31513EA81E326A9C00D355DF /* Run.swift in Sources */,
+				311BE2471E32E166006068A3 /* RunViewController.swift in Sources */,
 				314AB7FF1E31B16200B7B147 /* PopUpViewController.swift in Sources */,
+				311BE2451E32D700006068A3 /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

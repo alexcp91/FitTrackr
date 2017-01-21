@@ -12,26 +12,40 @@ import MapKit
 import ChameleonFramework
 
 
-class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerDelegate, MKMapViewDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
+class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate, DismissalDelegate {
   
-  
+  var tapBGGesture: UITapGestureRecognizer!
+  var vc: PopUpViewController!
+
+    
   func showPopUp() {
-    let vc =  PopUpViewController()
-    vc.modalPresentationStyle = .custom
-    vc.preferredContentSize = CGSize(width: 300, height: 300)
+    self.vc =  PopUpViewController()
+    vc.dismissalDelegate = self
+    self.vc.modalPresentationStyle = UIModalPresentationStyle.custom
+    self.vc.preferredContentSize = CGSize(width: 300, height: 300)
+    self.vc.modalTransitionStyle = .crossDissolve
+    present(self.vc, animated: true, completion: nil)
+
     
     
-    let popover = vc.popoverPresentationController!
-    popover.delegate = self
-    popover.permittedArrowDirections = .any
-    popover.sourceView = self.view
-    popover.sourceRect = self.view.bounds
-    popover.popoverLayoutMargins = UIEdgeInsets(top: 50, left: 50, bottom: 150, right: 150)
-
-    present(vc, animated: true, completion: nil)
-  }
-
-  
+    self.tapBGGesture = UITapGestureRecognizer()
+    tapBGGesture.addTarget(self, action: #selector(closeModal(_: )))
+    tapBGGesture.delegate = self
+    self.tapBGGesture.cancelsTouchesInView = false
+    self.view.window?.addGestureRecognizer(self.tapBGGesture)
+   
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let touchPoint = touch.location(in: self.view)
+        let mainWindow = self.view.frame
+        let vcWindow = self.vc.modalView.frame
+        if vcWindow.contains(touchPoint) {
+            return false
+        } else {
+            return true
+        }
+    }
   
   // Constant Sizes
   var tabBarHeight: CGFloat?
@@ -82,7 +96,6 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   
   @objc private func startButtonTapped(_: Any) {
     createDisplayLinkIfNeeded()
-    
     
     switch state {
     case .Stopped:
@@ -370,7 +383,6 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     
     
     
-    
 
     
     
@@ -400,13 +412,18 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     
   }
 
-  
+    func closeModal(_: Any) {
+        self.view.window?.removeGestureRecognizer(self.tapBGGesture)
+        dismiss(animated: true, completion: nil)
+    }
   
   override func viewDidAppear(_ animated: Bool) {
     
-    
+   
     
  }
+    
+    
   
   override func viewDidDisappear(_ animated: Bool) {
     /*

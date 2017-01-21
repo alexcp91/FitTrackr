@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     // Set up the second View Controller
-    let vc2 = UIViewController()
-    vc2.view.backgroundColor = UIColor.purple
+    let vc2 = RunViewController()
     let navBar2 = UINavigationController(rootViewController: vc2)
     navBar2.tabBarItem.title = "Purple"
     navBar2.tabBarItem.image = nil
