@@ -71,7 +71,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   
   // end map items
   
-  let initialDisplayNode: ASDisplayNode!
+  let initialDisplayNode: HeaderDisplayNode!
   var topRectangle: ASDisplayNode
   var bottomRectangle: ASDisplayNode
   
@@ -204,8 +204,8 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   
   
   init() {
-    initialDisplayNode = ASDisplayNode()
-    topRectangle = ASDisplayNode()
+    initialDisplayNode = HeaderDisplayNode()
+    topRectangle = HeaderDataNode()
     bottomRectangle = ASDisplayNode()
     
     speedLabelTopDescriptorNode = ASTextNode()
@@ -312,8 +312,8 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     // Top Rectangle Overlay Stack
     
     
-    let topRectangleCenterStack = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: mapNode)
-    let topRectangleOverlayStack = ASOverlayLayoutSpec(child: topRectangle, overlay: topRectangleCenterStack)
+   //  let topRectangleCenterStack = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: mapNode)
+   //  let topRectangleOverlayStack = ASOverlayLayoutSpec(child: topRectangle, overlay: topRectangleCenterStack)
     
     // Configure Bottom Rectangle Stack
     
@@ -343,7 +343,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
       let bottomOverlayStack = ASOverlayLayoutSpec(child: self.bottomRectangle, overlay: bottomStackCenter)
       
       
-      headerSubStack.children = [topRectangleOverlayStack, bottomOverlayStack]
+      headerSubStack.children = [self.topRectangle, bottomOverlayStack]
       headerSubStack.alignItems = ASStackLayoutAlignItems.stretch
       return headerSubStack
       
