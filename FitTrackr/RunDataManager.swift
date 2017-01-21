@@ -14,20 +14,26 @@ protocol RunDataManagerDelegate {
     
     func getSpeedInMPH(speed: CLLocationSpeed?)
     
+    //func getElapsedTime(time: TimeInterval?)
+    
     
 }
 
 class RunDataManager: LocationServiceDelegate {
-    
+        
     var delegate: RunDataManagerDelegate?
     
     var runLocations: [CLLocation] = []
     var runDistance: [CLLocationDistance] = []
     var pausedDistance: [CLLocationDistance] = [] // Stores distance added to runLocations if workout is paused
+    
     var speed: CLLocationSpeed = 0
     var pace: Double = 0
     
+    var elapsedTime: TimeInterval?
+    
     func getLocationData(locations: [CLLocation]) {
+        NotificationCenter.default.post(name: Notification.Name("LocationDataNotification"), object: nil)
         runLocations.append(locations[0] as CLLocation)
         
         

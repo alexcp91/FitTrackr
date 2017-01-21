@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate {
+class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate, TimerDelegate {
     
     
     let backgroundContainer = ASDisplayNode()
@@ -23,6 +23,16 @@ class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate {
     let paceData = ASTextNode()
     let caloriesLabel = ASTextNode()
     let caloriesData = ASTextNode()
+    
+    // Run Properties
+    var pace: Double?
+    
+    
+    var elapsedTime: TimeInterval?
+    var runDistance: [CLLocationDistance]?
+    var runLocations: [CLLocation]?
+    var elapsedMiles: CLLocationDistance?
+    
     
     let textDataAttrs = [
         NSFontAttributeName: UIFont.systemFont(ofSize: 24),
@@ -102,8 +112,10 @@ class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate {
     
     func getRunDistanceData(runLocations: [CLLocation], runDistance: [CLLocationDistance]) {
         
-        let miles =  runDistance.reduce(0, +) //- pausedDistance.reduce(0,+)
-        let milesString = String(format: "%.02f", miles)
+        self.runLocations = runLocations
+        self.runDistance = runDistance
+        elapsedMiles =  runDistance.reduce(0, +) //- pausedDistance.reduce(0,+) / 
+        let milesString = String(format: "%.02f", elapsedMiles!)
         distanceData.attributedText = NSAttributedString(string: milesString, attributes: distanceDataAttrs)
         
         
@@ -116,6 +128,27 @@ class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate {
         }
     }
     
+    func getTime(time: TimeInterval?) {
+        if let elapsedTime = time {
+            self.elapsedTime = elapsedTime
+            let hours = Int(self.elapsedTime!) / 3600
+            let minutes = Int(self.elapsedTime!) / 60 % 60
+            let seconds = Int(self.elapsedTime!) % 60
+            let timeString = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+            
+            timeData.attributedText = NSAttributedString(string: timeString, attributes: textDataAttrs)
+            calculatePace(self.elapsedTime!)
+        }
+    }
     
+    func calculatePace(_ elapsedTime: TimeInterval) {
+        if self.elapsedMiles != nil {
+            pace =  1 / (elapsedMiles! / (Double(elapsedTime)))
+            let minutes = (Double(pace!) / 60).truncatingRemainder(dividingBy: 60)
+            let seconds = Double(pace!).truncatingRemainder(dividingBy: 60)
+            let paceStr = String(format:"%.0f:%.0f", minutes, seconds)
+            paceData.attributedText = NSAttributedString(string: paceStr, attributes: textDataAttrs)
+        }
+    }
     
 }

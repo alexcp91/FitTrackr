@@ -57,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     locationService = LocationService()
     dataManager = RunDataManager()
     locationService?.delegate = dataManager
-    print("AppDelegate: \(dataManager)")
 
     
     

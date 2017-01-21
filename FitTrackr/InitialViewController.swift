@@ -18,6 +18,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   var tapBGGesture: UITapGestureRecognizer!
   var vc: PopUpViewController!
   var handler: RunDataManager?
+  var timer: Timer?
     
     
   func showPopUp() {
@@ -92,7 +93,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     // END ENUM
   
   
-  @objc private func startButtonTapped(_: Any) {
+  @objc private func startButtonTapped2(_: Any) {
     createDisplayLinkIfNeeded()
     
     switch state {
@@ -208,6 +209,8 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     startTimerButton = ASButtonNode()
     resetTimerButton = ASButtonNode()
     
+    timer = Timer()
+    
     
 
 
@@ -236,7 +239,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     startTimerButton.style.preferredSize = prefSize
     startTimerButton.cornerRadius = 30
     startTimerButton.backgroundColor = ComplementaryFlatColorOf(UIColor.flatSkyBlue)
-    startTimerButton.addTarget(self, action: #selector(startButtonTapped(_:)), forControlEvents: .touchUpInside)
+    startTimerButton.addTarget(self, action: #selector(startButtonTapped2(_:)), forControlEvents: .touchUpInside)
     
    
     resetTimerButton.borderWidth = borderWidth
@@ -326,6 +329,20 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   func displayLinkDidFire(_: CADisplayLink) {
     updateLabel()
   }
+    
+    func startButtonTapped(_: Any) {
+        startWorkout()
+    }
+    
+    func startWorkout() {
+        timer?.startTimer()
+        locationManager?.startUpdatingLocation()
+
+        
+        // Update Button
+        bottomRectangle.startWorkoutButton.setTitle("End Workout", with: bottomRectangle.buttonFont, with: bottomRectangle.buttonTextColor, for: [ ])
+        
+    }
   
   
   override func viewDidLoad() {
@@ -334,8 +351,11 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     handler = appDelegate.dataManager
     handler?.delegate = topDataRectangle
-    print(appDelegate)
-    print(handler)
+    timer?.delegate = topDataRectangle
+    print("Timer Delegate: \(timer?.delegate)")
+    locationManager = appDelegate.locationService?.locationManager
+    
+
 
     
     initialDisplayNode.backgroundColor = UIColor.blue
@@ -347,6 +367,10 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     }
     
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Switch", style: .plain, target: self, action: #selector(switchTopRectangleView(_:)))
+    
+    bottomRectangle.startWorkoutButton.addTarget(self, action: #selector(startButtonTapped(_: )), forControlEvents: .touchUpInside)
+    
+   
     
     
     
@@ -377,10 +401,10 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
         switch stateTopRectangle {
         case .data:
             stateTopRectangle = .map
-            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: false)
         case .map:
             stateTopRectangle = .data
-            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: false)
     }
     }
   
