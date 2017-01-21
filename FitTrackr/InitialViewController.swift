@@ -14,9 +14,11 @@ import ChameleonFramework
 
 class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate, DismissalDelegate {
   
+  
   var tapBGGesture: UITapGestureRecognizer!
   var vc: PopUpViewController!
-
+  var handler: RunDataManager?
+    
     
   func showPopUp() {
     self.vc =  PopUpViewController()
@@ -57,9 +59,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   var polyline: MKPolyline?
   
   var mapNode: MapNode!
-  
-  
-  
+   
   var locationManager: CLLocationManager?
   
   var myLocations: [CLLocation] = []
@@ -72,26 +72,24 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   // end map items
   
   let initialDisplayNode: HeaderDisplayNode!
-  var topRectangle: ASDisplayNode
-  var bottomRectangle: ASDisplayNode
-  
-  
-  let speedLabelTopDescriptorNode: ASTextNode
-  let speedLabelBottomDataNode: ASTextNode
-  
-  let timeLabelTopDescriptorNode: ASTextNode
-  let timeLabelBottomDataNode: ASTextNode
-  
-  let paceLabelTopDescriptorNode: ASTextNode
-  let paceLabelBottomDataNode: ASTextNode
-  
-  let distanceLabelDataNode: ASTextNode
-  
-  let timerLabelNode: ASTextNode
+  var topDataRectangle: HeaderDataNode!
+  var bottomRectangle: FooterNode!
   
   
   let startTimerButton: ASButtonNode
   let resetTimerButton: ASButtonNode
+    
+  var activeTopRectangle: ASDisplayNode?
+  
+    
+    // FOR TOP VIEW CONTROLLER
+    enum TopRectangleState {
+        case data, map
+    }
+    
+    var stateTopRectangle: TopRectangleState = .data
+    
+    // END ENUM
   
   
   @objc private func startButtonTapped(_: Any) {
@@ -191,7 +189,6 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
 
     
     
-    timeLabelBottomDataNode.attributedText = NSAttributedString(string: timeString, attributes: attrs)
   }
   
   private var state = State.Stopped {
@@ -205,80 +202,27 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   
   init() {
     initialDisplayNode = HeaderDisplayNode()
-    topRectangle = HeaderDataNode()
-    bottomRectangle = ASDisplayNode()
-    
-    speedLabelTopDescriptorNode = ASTextNode()
-    speedLabelBottomDataNode = ASTextNode()
-    
-    timeLabelTopDescriptorNode = ASTextNode()
-    timeLabelBottomDataNode = ASTextNode()
-    
-    paceLabelTopDescriptorNode = ASTextNode()
-    paceLabelBottomDataNode = ASTextNode()
-    
-    distanceLabelDataNode = ASTextNode()
-    
-    timerLabelNode = ASTextNode()
+    topDataRectangle = HeaderDataNode()
+    bottomRectangle = FooterNode()
     
     startTimerButton = ASButtonNode()
     resetTimerButton = ASButtonNode()
     
-    mapNode = MapNode()
+    
+
 
     
+    mapNode = MapNode()
     
+    
+    
+      
     super.init(node: initialDisplayNode)
     
     
-    // Configure Top Rectangle
-    
-    
-    // Configure Bottom Rectangle
-    bottomRectangle.backgroundColor = UIColor.flatSkyBlue
-    
-    // Configure Speed Stack
-    
-   
-    
-    speedLabelTopDescriptorNode.attributedText = NSAttributedString(string: "Speed (MPH)", attributes: attrs)
-    
-    
-    speedLabelBottomDataNode.attributedText = NSAttributedString(string: "0.00", attributes: attrs)
-    let speedStack = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .center, alignItems: .center, children: [speedLabelTopDescriptorNode,speedLabelBottomDataNode])
-    
-    // Configure Time Stack
-    
-    timeLabelTopDescriptorNode.attributedText = NSAttributedString(string: "Time", attributes: attrs)
-    timeLabelBottomDataNode.attributedText = NSAttributedString(string: "00:00:00", attributes: attrs)
-    let timeStack = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .center, alignItems: .center, children: [timeLabelTopDescriptorNode,timeLabelBottomDataNode])
-    
-    // Configure Pace Stack
-    
-    paceLabelTopDescriptorNode.attributedText = NSAttributedString(string: "Pace (MIN/MI)", attributes: attrs)
-    paceLabelBottomDataNode.attributedText = NSAttributedString(string: "00:00", attributes: attrs)
-    let paceStack = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .center, alignItems: .center, children: [paceLabelTopDescriptorNode,paceLabelBottomDataNode])
 
-    
-    // Configure Distance Stack
-    
-      distanceLabelDataNode.attributedText = NSAttributedString(string: "0.00", attributes: distanceAttrs)
-    let distanceStack = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumX, child: distanceLabelDataNode)
-    
-    // Configure TimeSpeed Stack
-    
-    let timeSpeedStack = ASStackLayoutSpec(direction: .horizontal, spacing: 30, justifyContent: .start, alignItems: .center, children: [speedStack, timeStack, paceStack])
-    timeSpeedStack.verticalAlignment = .verticalAlignmentTop
-    
-    
-    
-    
-    // Configure Timer Label & Stack
-    let timerAttrs = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 32)]
-    timerLabelNode.attributedText = NSAttributedString(string: "0:00.00", attributes: timerAttrs)
-    
-    let timerInsets = UIEdgeInsets(top: CGFloat.infinity, left: CGFloat.infinity, bottom: 75, right: CGFloat.infinity)
-    let timerInsetStack = ASInsetLayoutSpec(insets: timerInsets, child: timerLabelNode)
+    // bottomRectangle.startWorkoutButton.addTarget(self, action: #selector(startButtonTapped(_:)), forControlEvents: .touchUpInside)
+
     
     // Configure Timer Buttons
     
@@ -309,41 +253,54 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     // Configure Map
     mapView = mapNode.mapView
     
-    // Top Rectangle Overlay Stack
-    
-    
-   //  let topRectangleCenterStack = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: mapNode)
-   //  let topRectangleOverlayStack = ASOverlayLayoutSpec(child: topRectangle, overlay: topRectangleCenterStack)
-    
-    // Configure Bottom Rectangle Stack
-    
-    
-    let bottomStack = ASStackLayoutSpec(direction: .vertical, spacing: 40, justifyContent: .start, alignItems: .center, children: [timeSpeedStack, distanceStack, timerButtonStack])
-    let bottomStackCenter = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: bottomStack)
-    
-    
     
     // Other Inits
+    
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    self.navigationController?.navigationBar.isTranslucent = true
     
     
     initialDisplayNode.automaticallyManagesSubnodes = true
     
     self.node.layoutSpecBlock = { node in
-      self.topRectangle.style.flexGrow = 1.0
+        
+      
+        
+        if self.stateTopRectangle == .data {
+            self.activeTopRectangle = self.topDataRectangle
+        } else {
+            self.activeTopRectangle = self.mapNode
+            
+        }
+        
+  
+        
+        
+        
+      self.activeTopRectangle?.style.flexGrow = 1.0
       self.bottomRectangle.style.flexGrow = 1.0
+        
+      self.activeTopRectangle?.style.flexBasis = ASDimensionMake("75%")
+      self.bottomRectangle.style.flexBasis = ASDimensionMake("25%")
+        
+        
+        
+        
       self.initialDisplayNode.frame = self.view.frame
-      self.topRectangle.style.preferredSize = CGSize(width: self.view.frame.width, height: self.view.frame.height / 2 )
-      self.bottomRectangle.style.preferredSize = CGSize(width: self.view.bounds.width, height: self.view.frame.height / 2)
-      self.bottomRectangle.style.minHeight = ASDimension(unit: .auto, value: self.view.frame.height / 2)
+      // self.topRectangle.style.preferredSize = CGSize(width: self.view.frame.width, height: self.view.frame.height / 2 )
+      // self.bottomRectangle.style.preferredSize = CGSize(width: self.view.bounds.width, height: self.view.frame.height / 2)
+      // self.bottomRectangle.style.minHeight = ASDimension(unit: .auto, value: self.view.frame.height / 2)
       
       
       let headerSubStack = ASStackLayoutSpec.vertical()
       
       
-      let bottomOverlayStack = ASOverlayLayoutSpec(child: self.bottomRectangle, overlay: bottomStackCenter)
+      // let bottomOverlayStack = ASOverlayLayoutSpec(child: self.bottomRectangle, overlay: bottomStackCenter)
       
       
-      headerSubStack.children = [self.topRectangle, bottomOverlayStack]
+      headerSubStack.children = [self.activeTopRectangle!, self.bottomRectangle]
       headerSubStack.alignItems = ASStackLayoutAlignItems.stretch
       return headerSubStack
       
@@ -373,6 +330,14 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    handler = appDelegate.dataManager
+    handler?.delegate = topDataRectangle
+    print(appDelegate)
+    print(handler)
+
+    
     initialDisplayNode.backgroundColor = UIColor.blue
     if let tabBarHeight = self.tabBarController?.tabBar.bounds.size.height, let navBarHeight = self.navigationController?.navigationBar.bounds.size.height {
       frame = self.view.frame
@@ -380,6 +345,8 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
       self.view.frame = frame!
 
     }
+    
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Switch", style: .plain, target: self, action: #selector(switchTopRectangleView(_:)))
     
     
     
@@ -396,18 +363,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
     //topRectangle.view.bringSubview(toFront: mapView)
     // topRectangle.addSubnode(mapNode)
     
-    locationManager = CLLocationManager()
-    self.locationManager?.requestAlwaysAuthorization()
-    self.locationManager?.requestWhenInUseAuthorization()
-    
-    if CLLocationManager.locationServicesEnabled() {
-      locationManager!.delegate = self
-      locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-      print("location enabled")
-    } else {
-      print("location not enabled")
-    }
-
+   
     
     
   }
@@ -416,11 +372,19 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
         self.view.window?.removeGestureRecognizer(self.tapBGGesture)
         dismiss(animated: true, completion: nil)
     }
+    
+    func switchTopRectangleView(_: Any) {
+        switch stateTopRectangle {
+        case .data:
+            stateTopRectangle = .map
+            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+        case .map:
+            stateTopRectangle = .data
+            initialDisplayNode.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+    }
+    }
   
   override func viewDidAppear(_ animated: Bool) {
-    
-   
-    
  }
     
     
@@ -471,14 +435,12 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
       distance.append(dist)
       let miles = distance.reduce(0, +) - pausedDistance.reduce(0,+)
       let milesString = String(format: "%.02f", miles)
-      distanceLabelDataNode.attributedText = NSAttributedString(string: milesString, attributes: distanceAttrs)
       
       
       speed = locationManager?.location?.speed
       if let speedInMetersPerSecond = speed {
         let speedInMilesPerHour = max(2.23694 * speedInMetersPerSecond, 0)
         let speedString = String(format: "%.02f", speedInMilesPerHour)
-        speedLabelBottomDataNode.attributedText = NSAttributedString(string: speedString, attributes: attrs)
         
         pace =  1 / (miles / (Double(elapsedTime)))
         
@@ -487,7 +449,6 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
         let seconds = Double(pace!).truncatingRemainder(dividingBy: 60)
         let paceStr = String(format:"%.0f:%.0f", minutes, seconds)
         
-        paceLabelBottomDataNode.attributedText = NSAttributedString(string: paceStr, attributes: attrs)
 
       }
       
@@ -517,9 +478,7 @@ class InitialViewController: ASViewController<ASDisplayNode>, CLLocationManagerD
 
   }
   
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print("Failed to initialize GPS: ", error.localizedDescription)
-  }
+  
 
   
 }

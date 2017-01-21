@@ -13,6 +13,9 @@ import ChameleonFramework
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var locationService: LocationService?
+  var dataManager: RunDataManager?
+
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -50,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Make the Tab Bar Controller the root view controller
     window?.rootViewController = tabBarController
+    
+    locationService = LocationService()
+    dataManager = RunDataManager()
+    locationService?.delegate = dataManager
+    print("AppDelegate: \(dataManager)")
+
     
     
     /*

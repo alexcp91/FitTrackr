@@ -12,6 +12,10 @@
 		311BE2471E32E166006068A3 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2461E32E166006068A3 /* RunViewController.swift */; };
 		311BE24B1E32EF0D006068A3 /* HeaderDisplayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE24A1E32EF0D006068A3 /* HeaderDisplayNode.swift */; };
 		311BE24D1E32FC36006068A3 /* HeaderDataNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE24C1E32FC36006068A3 /* HeaderDataNode.swift */; };
+		311BE24F1E330E54006068A3 /* FooterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE24E1E330E54006068A3 /* FooterNode.swift */; };
+		311BE2531E332715006068A3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2521E332715006068A3 /* LocationService.swift */; };
+		311BE2551E332E87006068A3 /* RunDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2541E332E87006068A3 /* RunDataManager.swift */; };
+		311BE2571E33484C006068A3 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BE2561E33484C006068A3 /* Timer.swift */; };
 		312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F51E30011B003FB1F0 /* AppDelegate.swift */; };
 		312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A80F71E30011B003FB1F0 /* InitialViewController.swift */; };
 		312A80FB1E30011B003FB1F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312A80F91E30011B003FB1F0 /* Main.storyboard */; };
@@ -49,6 +53,10 @@
 		311BE2461E32E166006068A3 /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		311BE24A1E32EF0D006068A3 /* HeaderDisplayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDisplayNode.swift; sourceTree = "<group>"; };
 		311BE24C1E32FC36006068A3 /* HeaderDataNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDataNode.swift; sourceTree = "<group>"; };
+		311BE24E1E330E54006068A3 /* FooterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterNode.swift; sourceTree = "<group>"; };
+		311BE2521E332715006068A3 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		311BE2541E332E87006068A3 /* RunDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunDataManager.swift; sourceTree = "<group>"; };
+		311BE2561E33484C006068A3 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		312A80F21E30011B003FB1F0 /* FitTrackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitTrackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312A80F51E30011B003FB1F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		312A80F71E30011B003FB1F0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -130,11 +138,15 @@
 			children = (
 				311BE24A1E32EF0D006068A3 /* HeaderDisplayNode.swift */,
 				311BE24C1E32FC36006068A3 /* HeaderDataNode.swift */,
+				311BE24E1E330E54006068A3 /* FooterNode.swift */,
 				31513EA71E326A9C00D355DF /* Run.swift */,
 				312A80F51E30011B003FB1F0 /* AppDelegate.swift */,
 				314AB7FE1E31B16200B7B147 /* PopUpViewController.swift */,
 				31F7406D1E3174BD009F54B4 /* MapNode.swift */,
 				312A80F71E30011B003FB1F0 /* InitialViewController.swift */,
+				311BE2561E33484C006068A3 /* Timer.swift */,
+				311BE2521E332715006068A3 /* LocationService.swift */,
+				311BE2541E332E87006068A3 /* RunDataManager.swift */,
 				311BE2461E32E166006068A3 /* RunViewController.swift */,
 				311BE2441E32D700006068A3 /* Protocol.swift */,
 				312A80F91E30011B003FB1F0 /* Main.storyboard */,
@@ -470,14 +482,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311BE24F1E330E54006068A3 /* FooterNode.swift in Sources */,
 				31F7406E1E3174BD009F54B4 /* MapNode.swift in Sources */,
 				311BE24D1E32FC36006068A3 /* HeaderDataNode.swift in Sources */,
 				312A80F81E30011B003FB1F0 /* InitialViewController.swift in Sources */,
+				311BE2571E33484C006068A3 /* Timer.swift in Sources */,
 				312A80F61E30011B003FB1F0 /* AppDelegate.swift in Sources */,
 				31513EA81E326A9C00D355DF /* Run.swift in Sources */,
 				311BE2471E32E166006068A3 /* RunViewController.swift in Sources */,
 				314AB7FF1E31B16200B7B147 /* PopUpViewController.swift in Sources */,
 				311BE2451E32D700006068A3 /* Protocol.swift in Sources */,
+				311BE2551E332E87006068A3 /* RunDataManager.swift in Sources */,
+				311BE2531E332715006068A3 /* LocationService.swift in Sources */,
 				311BE24B1E32EF0D006068A3 /* HeaderDisplayNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

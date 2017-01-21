@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class HeaderDataNode: ASDisplayNode {
+class HeaderDataNode: ASDisplayNode, RunDataManagerDelegate {
     
     
     let backgroundContainer = ASDisplayNode()
@@ -48,7 +48,6 @@ class HeaderDataNode: ASDisplayNode {
         super.init()
     
         automaticallyManagesSubnodes = true
-    
     
         speedLabel.attributedText = NSAttributedString(string: "Speed (MPH)", attributes: textLabelAttrs)
         timeLabel.attributedText = NSAttributedString(string: "Time", attributes: textLabelAttrs)
@@ -94,8 +93,28 @@ class HeaderDataNode: ASDisplayNode {
         
         let bottomStack = ASStackLayoutSpec(direction: .horizontal, spacing: 30, justifyContent: .spaceAround, alignItems: .center, children: [paceLabelSpec, caloriesLabelSpec])
         
-        return ASStackLayoutSpec(direction: .vertical, spacing: 0, justifyContent: .spaceAround, alignItems: .center, children: [topStack, middleStack, bottomStack])
+        let totalStack = ASStackLayoutSpec(direction: .vertical, spacing: 80, justifyContent: .center, alignItems: .center, children: [topStack, middleStack, bottomStack])
+        
+        let insets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        return ASInsetLayoutSpec(insets: insets, child: totalStack)
      }
+    
+    
+    func getRunDistanceData(runLocations: [CLLocation], runDistance: [CLLocationDistance]) {
+        
+        let miles =  runDistance.reduce(0, +) //- pausedDistance.reduce(0,+)
+        let milesString = String(format: "%.02f", miles)
+        distanceData.attributedText = NSAttributedString(string: milesString, attributes: distanceDataAttrs)
+        
+        
+    }
+    
+    func getSpeedInMPH(speed: CLLocationSpeed?) {
+        if let speedStr = speed {
+            let speedString = String(format: "%.02f", speedStr)
+            speedData.attributedText = NSAttributedString(string: speedString, attributes: textDataAttrs)
+        }
+    }
     
     
     

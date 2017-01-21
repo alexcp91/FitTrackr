@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FitTrackr/InitialViewController.swift"
-            timestampString = "506651649.221284"
+            timestampString = "506676960.615794"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "updateLabel()"
             landmarkType = "7">
             <Locations>
@@ -95,6 +95,83 @@
             endingLineNumber = "12"
             landmarkName = "PopUpViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitTrackr.PopUpViewController.__deallocating_deinit"
+                  moduleName = "FitTrackr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/PopUpViewController.swift"
+                  timestampString = "506664078.568281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitTrackr.PopUpViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; FitTrackr.PopUpViewController"
+                  moduleName = "FitTrackr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/PopUpViewController.swift"
+                  timestampString = "506664078.572285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitTrackr.PopUpViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; FitTrackr.PopUpViewController"
+                  moduleName = "FitTrackr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/PopUpViewController.swift"
+                  timestampString = "506664078.576602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitTrackr.PopUpViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FitTrackr.PopUpViewController&gt;"
+                  moduleName = "FitTrackr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/PopUpViewController.swift"
+                  timestampString = "506664078.580718"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitTrackr.PopUpViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FitTrackr.PopUpViewController&gt;"
+                  moduleName = "FitTrackr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/PopUpViewController.swift"
+                  timestampString = "506664078.585318"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -136,7 +213,7 @@
                   moduleName = "FitTrackr"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/Protocol.swift"
-                  timestampString = "506651061.107569"
+                  timestampString = "506664078.923861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -151,7 +228,7 @@
                   moduleName = "FitTrackr"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alexpersson/Desktop/App/FitTrackr/FitTrackr/Protocol.swift"
-                  timestampString = "506651061.110907"
+                  timestampString = "506664078.928505"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -159,6 +236,36 @@
                   offsetFromSymbolStart = "232">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitTrackr/InitialViewController.swift"
+            timestampString = "506676960.615794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitTrackr/RunDataManager.swift"
+            timestampString = "506674707.525869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
